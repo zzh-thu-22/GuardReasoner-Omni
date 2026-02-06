@@ -68,20 +68,13 @@ def accuracy_reward(res: str, ground_truth: str) -> float:
 
 
 def exploration_reward(response_length: int, accuracy_score: float) -> float:
-    """
-    探索性长度奖励：
-    1. 如果 accuracy_score == 1.0 (全对)，奖励为 0。
-    2. 如果 accuracy_score < 1.0 (有错误)，鼓励写更长的 CoT。
-    3. 使用 tanh 函数限制最大奖励，防止无限长度。
-    """
-    # 参数设置 (根据你的任务调整)
-    MAX_REWARD = 0.2       # alpha: 只有当错了且写得够长时，最多能补回多少分
-    TARGET_LENGTH = 300   # sigma: 期望的“足够长”的字符数 (大约 150-200 tokens)
+    
+    MAX_REWARD = 0.2      
+    TARGET_LENGTH = 300 
     
     if accuracy_score >= 1.0:
         return 0.0
     
-    # 计算长度得分 (0 到 1 之间)
     length_factor = math.tanh(response_length / TARGET_LENGTH)
     
     return MAX_REWARD * length_factor
