@@ -9,6 +9,46 @@
 
 </div>
 
+
+## 🚀 Training
+
+We first perform supervised fine-tuning on the GuardReasoner-OmniTrain-181k dataset for three epoch to obtain the SFT model.
+
+```bash
+bash ./script/sft.sh
+```
+
+This is followed by RL training on the hard sample to produce the final GuardReasoner-Omni model. .  
+
+The script for training the obtained SFT model with GRPO is as follows
+
+```bash
+bash ./script/GRPO.sh
+```
+
+For efficiency considerations, videos are downsampled to 1 FPS and capped at a maximum of 128 frames during training, with each frame processed at a maximum resolution of 64 × 28 × 28 pixels. Similarly, the resolution for the image modality is strictly constrained to a maximum of 2048 × 28 × 28 pixels.
+
+## 🔮 Evaluation
+
+Download the JSON files and mm_data, then put them in `./data/test_data` 
+
+Run the following code to evaluate all benchmarks:
+
+```bash
+python ./src/generate.py
+python ./src/evaluate.py
+```
+
+
+## Acknowledgement
+Our method are partly based on the following resources. Thanks for their awesome works.
+- [GuardReasoner](https://github.com/yueliu1999/GuardReasoner)
+- [GuardReasoner-VL](https://github.com/yueliu1999/GuardReasoner-VL)
+- [ms-swift](https://github.com/modelscope/ms-swift)
+- [Qwen2.5-Omni](https://github.com/QwenLM/Qwen2.5-Omni)
+
+
+
 ## Citations
 
 If you find this repository helpful, please cite our paper.
