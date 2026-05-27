@@ -18,9 +18,14 @@ We first perform supervised fine-tuning on the GuardReasoner-OmniTrain-181k data
 bash ./script/sft.sh
 ```
 
-This is followed by RL training on the hard sample to produce the final GuardReasoner-Omni model.
+Next, run the following code to extract hard samples, which will be used to further refine the model.
 
-The script for training the obtained SFT model with GRPO is as follows
+```bash
+python ./src/hard_sample_mining.py
+```
+
+
+Finally, conduct GRPO training on the mined hard samples using the previously obtained SFT model to produce the final GuardReasoner-Omni model.
 
 ```bash
 bash ./script/GRPO.sh
@@ -32,7 +37,7 @@ For efficiency considerations, videos are downsampled to 1 FPS and capped at a m
 
 Download the JSON files and mm_data, then put them in `./data/test_data` 
 
-Run the following code to evaluate all benchmarks:
+Run the following code to evaluate all benchmarks.
 
 ```bash
 python ./src/generate.py
