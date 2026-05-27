@@ -12,13 +12,13 @@
 
 ## 🚀 Training
 
-We first perform supervised fine-tuning on the GuardReasoner-OmniTrain-181k dataset for three epoch to obtain the SFT model.
+We first perform supervised fine-tuning on the GuardReasoner-OmniTrain-181k dataset to obtain the SFT model.
 
 ```bash
 bash ./script/sft.sh
 ```
 
-This is followed by RL training on the hard sample to produce the final GuardReasoner-Omni model. .  
+This is followed by RL training on the hard sample to produce the final GuardReasoner-Omni model.
 
 The script for training the obtained SFT model with GRPO is as follows
 
