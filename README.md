@@ -35,7 +35,7 @@ For efficiency considerations, videos are downsampled to 1 FPS and capped at a m
 
 ## 🔮 Evaluation
 
-Download the JSON files and mm_data, then put them in `./data/test_data` 
+Download the JSON files and mm_data, then put the JSON files in `./data/test_data` .
 
 Run the following code to evaluate all benchmarks.
 
