@@ -31,7 +31,7 @@ AI assistant:
     # text benchmark
     text_benchmark_list = ["Aegis_2_prompt", "Aegis_2_response", "BeaverTails", "HarmBench_prompt", 
     "HarmBench_response", "openaimoderation", "SimpleSafetyTest", "sorrybench", "toxic_chat_test",
-    "wildguard_prompt", "wildguard_response", "xstest_prompt", "xstest_response", "saferlhf", "or-bench"]
+    "wildguard_prompt", "wildguard_response", "xstest_prompt", "saferlhf", "or-bench"]
     for idx, data_name in enumerate(text_benchmark_list):
         with open(f"{args.benchmark_path}{data_name}.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
